@@ -1,0 +1,121 @@
+# https://amazon-reviews-2023.github.io/
+
+# All_Beauty
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/All_Beauty.jsonl.gz -O All_Beauty.jsonl.gz
+
+# Amazon_Fashion
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Amazon_Fashion.jsonl.gz -O Amazon_Fashion.jsonl.gz
+
+# Appliances
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Appliances.jsonl.gz -O Appliances.jsonl.gz
+
+# Arts, Crafts and Sewing
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Arts_Crafts_and_Sewing.jsonl.gz -O Arts_Crafts_and_Sewing.jsonl.gz
+
+# Automotive
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Automotive.jsonl.gz -O Automotive.jsonl.gz
+
+# Baby
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Baby_Products.jsonl.gz -O Baby_Products.jsonl.gz
+
+# Beauty and Personal Care
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Beauty_and_Personal_Care.jsonl.gz -O Beauty_and_Personal_Care.jsonl.gz
+
+# Books
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Books.jsonl.gz -O Books.jsonl.gz
+
+# CDs and Vinyl
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/CDs_and_Vinyl.jsonl.gz -O CDs_and_Vinyl.jsonl.gz
+
+# Cell Phones and Accessories
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Cell_Phones_and_Accessories.jsonl.gz -O Cell_Phones_and_Accessories.jsonl.gz
+
+# Clothing, Shoes and Jewelry
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Clothing_Shoes_and_Jewelry.jsonl.gz -O Clothing_Shoes_and_Jewelry.jsonl.gz
+
+# Digital Music
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Digital_Music.jsonl.gz -O Digital_Music.jsonl.gz
+
+# Electronics
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Electronics.jsonl.gz -O Electronics.jsonl.gz
+
+# Gift Cards
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Gift_Cards.jsonl.gz -O Gift_Cards.jsonl.gz
+
+# Grocery and Gourmet Food
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Grocery_and_Gourmet_Food.jsonl.gz -O Grocery_and_Gourmet_Food.jsonl.gz
+
+# Handmade Products
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Handmade_Products.jsonl.gz -O Handmade_Products.jsonl.gz
+
+# Health and Household
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Health_and_Household.jsonl.gz -O Health_and_Household.jsonl.gz
+
+# Home and Kitchen
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Home_and_Kitchen.jsonl.gz -O Home_and_Kitchen.jsonl.gz
+
+# Industrial and Scientific
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Industrial_and_Scientific.jsonl.gz -O Industrial_and_Scientific.jsonl.gz
+
+# Kindle Store
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Kindle_Store.jsonl.gz -O Kindle_Store.jsonl.gz
+
+# Magazine Subscriptions
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Magazine_Subscriptions.jsonl.gz -O Magazine_Subscriptions.jsonl.gz
+
+# Movies and TV
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Movies_and_TV.jsonl.gz -O Movies_and_TV.jsonl.gz
+
+# Musical Instruments
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Musical_Instruments.jsonl.gz -O Musical_Instruments.jsonl.gz
+
+# Office Products
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Office_Products.jsonl.gz -O Office_Products.jsonl.gz
+
+# Patio, Lawn and Garden
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Patio_Lawn_and_Garden.jsonl.gz -O Patio_Lawn_and_Garden.jsonl.gz
+
+# Pet Supplies
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Pet_Supplies.jsonl.gz -O Pet_Supplies.jsonl.gz
+
+# Software
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Software.jsonl.gz -O Software.jsonl.gz
+
+# Sports and Outdoors
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Sports_and_Outdoors.jsonl.gz -O Sports_and_Outdoors.jsonl.gz
+
+# Tools and Home Improvement
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Tools_and_Home_Improvement.jsonl.gz -O Tools_and_Home_Improvement.jsonl.gz
+
+# Toys and Games
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Toys_and_Games.jsonl.gz -O Toys_and_Games.jsonl.gz
+
+# Video Games
+wget https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Video_Games.jsonl.gz -O Video_Games.jsonl.gz
+
+
+# Create the resources folder in the upper level if it does not exist
+# mkdir -p ../resources
+
+# Loop through each compressed file and process it one by one
+for file in *.jsonl.gz; do
+    echo "Decompressing $file..."
+    
+    # Decompress the file
+    gunzip "$file"
+    
+    # Get the decompressed file name (without .gz)
+    decompressed_file="${file%.gz}"
+    
+    # Move the decompressed file to the resources folder
+    # mv "$decompressed_file" ../resources/
+    
+    # echo "$decompressed_file moved to ../resources/"
+    
+    # Check available disk space
+    # df -h .
+done
+
+# Confirm that the files have been moved
+# echo "Files moved to ../resources/:"
+# ls -lh ../resources/
