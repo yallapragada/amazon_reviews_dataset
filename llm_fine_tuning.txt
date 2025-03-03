@@ -1,4 +1,4 @@
-tdata_dir=/perficient/data/llm_fine_tuning
+data_dir=/perficient/data/llm_fine_tuning
 test_size=0.2
 max_sequence_length=64
 model_name=meta-llama/Meta-Llama-3-70B
