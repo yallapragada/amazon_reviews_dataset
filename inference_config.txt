@@ -1,0 +1,23 @@
+# Text Summarization Inference Configuration
+
+# Dataset parameters
+data_dir=/inference/data
+output_dir=/inference/output_summaries
+file_size_kb=100
+max_files=20
+
+# Model parameters
+model_name=mistralai/Mistral-7B-v0.3
+hf_token=None
+batch_size=8
+text_column=document
+
+# Inference parameters
+max_length=512
+max_new_tokens=100
+
+# Quantization parameters
+load_in_4bit=False
+quant_type=nf4
+use_double_quant=False
+compute_dtype=bfloat16 
