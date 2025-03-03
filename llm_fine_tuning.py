@@ -38,7 +38,8 @@ def load_data(config:dict, logger: Logger):
     
     """Load and preprocess the dataset."""
     logger.info('Loading CSV data using streaming approach')
-    
+
+    data_dir = config['data_dir']
     test_size = float(config['test_size'])
     seed = int(config['seed'])
     data_dir = config['data_dir']
