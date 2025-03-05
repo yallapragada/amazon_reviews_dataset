@@ -1,0 +1,29 @@
+apiVersion: kubeflow.org/v1
+kind: MPIJob
+metadata:
+  name: llm-finetune-job
+spec:
+  slotsPerWorker: 8  # Number of GPUs per node
+  mpiReplicaSpecs:
+    Launcher:
+      replicas: 1
+      template:
+        spec:
+          containers:
+            - name: mpi-launcher
+              image: e-ppsc-docker-virtual.docker.lowes.com/cgmuros/llm_finetune_main:v1
+              command: ["accelerate", "launch", "/app/llm_finetune.py"]
+              resources:
+                limits:
+                  nvidia.com/gpu: 1  # Launcher gets a GPU
+    Worker:
+      replicas: 2
+      template:
+        spec:
+          containers:
+            - name: mpi-worker
+              image: e-ppsc-docker-virtual.docker.lowes.com/cgmuros/llm_finetune_worker:v1
+              command: ["accelerate", "launch", "/app/llm_finetune.py"]
+              resources:
+                limits:
+                  nvidia.com/gpu: 1
