@@ -1,5 +1,3 @@
-# load and search ChromaDB index
-
 import os
 import torch
 import chromadb
@@ -67,20 +65,10 @@ def store_embeddings():
     dataset = load_data()
     print(f"Loaded {len(dataset)} samples from {DATASET_NAME}")
     
-    # Check dataset structure
-    print("Dataset features:", dataset.features)
-    sam = dataset[0]
-    print("Sample keys:", sam.keys())
-    print(type(dataset))
-    print("Example sample:", sam)
-    
-    # Determine which field to use for text
-    text_field = "answers"
-    
-    print(f"Using '{text_field}' as the text field for embeddings")
-    
     # Store embeddings in batches
     batch_size = 50
+    
+    doc_counter = 0  # Global counter for document IDs
     
     # Better way to iterate through dataset in batches
     for i in range(0, len(dataset), batch_size):
@@ -91,23 +79,26 @@ def store_embeddings():
         documents = []
         embeddings = []
         
-        for j, sample in enumerate(batch):
-            doc_id = f"doc_{i+j}"
-            text = sample[text_field]
+        for sample in batch:
+            passage_texts = sample["passages"]["passage_text"]
             
-            # Handle potential list/dict structures
-            if isinstance(text, (list, dict)):
+            # Handle each passage text as a separate document
+            for text in passage_texts:
+
                 text = str(text)
-            
-            # Skip empty texts
-            if not text or len(text.strip()) == 0:
-                continue
+
+                # Skip empty texts
+                if not text or len(text.strip()) == 0:
+                    continue
+                    
+                doc_id = f"doc_{doc_counter}"
+                doc_counter += 1
                 
-            embedding = compute_embedding(text)
-            
-            ids.append(doc_id)
-            documents.append(text)
-            embeddings.append(embedding)
+                embedding = compute_embedding(text)
+                
+                ids.append(doc_id)
+                documents.append(text)
+                embeddings.append(embedding)
         
         if ids:  # Only add if there are valid documents
             collection.add(ids=ids, documents=documents, embeddings=embeddings)
@@ -151,24 +142,9 @@ def interactive_query():
         # Skip empty queries
         if not query or len(query.strip()) == 0:
             continue
-            
-        print(f"\nQuery {i+1}: {query}")
-        
+    
         results = query_database(query)
-        
-        print(f"Top {len(results['documents'][0])} results:")
-        for j, (doc, distance) in enumerate(zip(results['documents'][0], results['distances'][0])):
-            print(f"\n--- Result {j+1} (Similarity: {1-distance:.4f}) ---")
-            # Print a preview of the document (first 200 chars)
-            preview = doc[:200] + "..." if len(doc) > 200 else doc
-            print(preview)
             
-        print("\n" + "-"*50)
-        
-        # Optional: add a limit to avoid processing too many queries
-        if i >= 50:  # Process only the first 50 queries
-            print("Reached the maximum number of queries to process.")
-            break
 
 if __name__ == "__main__":
     
