@@ -91,11 +91,5 @@ def store_embeddings():
     
     print(f"Stored {len(documents)} documents in FAISS index.")
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--samples", type=int, default=MAX_SAMPLES, help="Maximum number of samples")
-    args = parser.parse_args()
-    
-    MAX_SAMPLES = args.samples
-    
+if __name__ == "__main__":    
     store_embeddings()
